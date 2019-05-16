@@ -42,6 +42,11 @@ export default function (text, wholeMask) {
     const char = text.charAt(maskIndex - charOffset);
     const mask = wholeMask.charAt(maskIndex);
 
+    // Прекратить работу и не дописывать символы из маски в конец
+    if (!char) {
+      return newText;
+    }
+
     switch (mask) {
       case '#':
         /\d/.test(char) ? newText += char : x = 0;
